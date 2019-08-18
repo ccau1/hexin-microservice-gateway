@@ -1,0 +1,45 @@
+{
+  "name": "hexin-gateway",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.ts",
+  "scripts": {
+    "dev": "docker-compose -f docker/development/docker-compose.yml up -d --build && yarn log",
+    "start": "node dist/server.js",
+    "release": "docker-compose -f docker/release/docker-compose.yml up -d --build",
+    "build": "tsc --p tsconfig.json",
+    "log": "docker logs -f hexin-gateway",
+    "test": "jest --forceExit",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "author": "",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
+  },
+  "devDependencies": {
+    "@types/amqplib": "^0.5.13",
+    "@types/express": "^4.17.0",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.6.2",
+    "@types/supertest": "^2.0.8",
+    "@typescript-eslint/eslint-plugin": "^1.12.0",
+    "@typescript-eslint/parser": "^1.12.0",
+    "eslint": "^6.0.1",
+    "husky": "^3.0.0",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.1",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "amqplib": "^0.5.5",
+    "chalk": "^2.4.2",
+    "express": "^4.17.1",
+    "node": "^12.6.0"
+  }
+}
